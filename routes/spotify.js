@@ -13,7 +13,7 @@ var redirect_uri = 'https://pacific-headland-98039.herokuapp.com/spotify_callbac
 
 var stateKey = 'spotify_auth_state';
 
-var generateRandomString = function(length) {
+var generateRandomString = function (length) {
     var text = '';
     var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
@@ -23,7 +23,7 @@ var generateRandomString = function(length) {
     return text;
 };
 
-exports.login = function(req, res) {
+exports.login = function (req, res) {
 
     var state = generateRandomString(16);
     res.cookie(stateKey, state);
@@ -41,7 +41,7 @@ exports.login = function(req, res) {
 };
 
 
-exports.callback = function(req, res) {
+exports.callback = function (req, res) {
 
     // your application requests refresh and access tokens
     // after checking the state parameter
@@ -70,20 +70,22 @@ exports.callback = function(req, res) {
             json: true
         };
 
-        request.post(authOptions, function(error, response, body) {
+        request.post(authOptions, function (error, response, body) {
             if (!error && response.statusCode === 200) {
 
                 var access_token = body.access_token,
                     refresh_token = body.refresh_token;
 
+                console.log('got tokens',access_token,refresh_token);
+
                 var options = {
                     url: 'https://api.spotify.com/v1/me',
-                    headers: { 'Authorization': 'Bearer ' + access_token },
+                    headers: {'Authorization': 'Bearer ' + access_token},
                     json: true
                 };
 
                 // use the access token to access the Spotify Web API
-                request.get(options, function(error, response, body) {
+                request.get(options, function (error, response, body) {
                     console.log(body);
                 });
 
