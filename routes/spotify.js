@@ -8,8 +8,8 @@ var cookieParser = require('cookie-parser');
 
 var client_id = '92f1a296e55c470ab95ab7c0e5d123d6';
 var client_secret = '1571832b11cd44c7af02af2eefc12dff';
-// var redirect_uri = 'https://pacific-headland-98039.herokuapp.com/spotify_callback';
-var redirect_uri = 'localhost:5000/spotify_callback';
+var redirect_uri = 'https://pacific-headland-98039.herokuapp.com/spotify_callback';
+// var redirect_uri = 'localhost:5000/spotify_callback';
 
 var stateKey = 'spotify_auth_state';
 
