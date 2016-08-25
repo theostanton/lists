@@ -15,8 +15,11 @@
     "ejs": "2.4.1",
     "express": "4.13.3",
     "pg": "4.x",
+    "pg-promise": "^5.3.2",
+    "q": "^1.4.1",
     "querystring": "^0.2.0",
-    "request": "^2.74.0"
+    "request": "^2.74.0",
+    "request-promise": "^4.1.1"
   },
   "repository": {
     "type": "git",

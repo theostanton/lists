@@ -1,0 +1,6 @@
+GET     /users                                  - Get all users
+GET     /users/:user_id                         - Get user info
+GET     /users/:user_id/lists                   - Get users lists
+POST    /users/:user_id/lists                   - Create list
+GET     /users/:user_id/lists/:list_id          - Get users list
+PUT     /users/:user_id/lists/:list_id          - Edit users list

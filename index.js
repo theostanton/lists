@@ -1,10 +1,8 @@
 var cool = require('cool-ascii-faces');
 var express = require('express');
 var app = express();
-var pg = require('pg');
 
-var lists = require('./routes/lists');
-var spotify = require('./routes/spotify');
+var db = require('./database');
 
 
 app.set('port', (process.env.PORT || 5000));
@@ -19,23 +17,24 @@ app.get('/', function (request, response) {
     response.render('pages/index');
 });
 
-app.get('/cool', function (request, response) {
-    response.send(cool());
-});
-
+// app.get('/users/:id',function|(req, res){
+//     var user = users.
+//
+//     res.render('pages/user',{})
+// }
 
 app.get('/db', function (request, response) {
-    pg.connect(process.env.DATABASE_URL, function (err, client, done) {
-        client.query('SELECT * FROM test_table', function (err, result) {
-            done();
-            if (err) {
-                console.error(err);
-                response.send("Error " + err);
-            }
-            else {
-                response.render('pages/db', {results: result.rows});
-            }
-        });
+
+    db.execute('SELECT * FROM test_table', function (err, result) {
+
+        console.log({err: err, result: result.rows});
+        if (err) {
+            console.error(err);
+            response.send("Error " + err);
+        }
+        else {
+            response.render('./pages/db', {results: result.rows});
+        }
     });
 });
 
@@ -47,12 +46,13 @@ app.get('/times', function (request, response) {
     response.send(result);
 });
 
-app.get('/lists',lists.findAll);
-app.get('/lists/:id',lists.findById);
+var usersRouter = require('./routes/api/users');
+app.use('/users',usersRouter);
 
-
-app.get('/login',spotify.login);
-app.get('/spotify_callback',spotify.callback);
+var spotify = require('./routes/spotify');
+app.get('/login', spotify.login);
+app.get('/spotify_callback', spotify.callback);
+app.get('/me', spotify.me);
 
 
 app.listen(app.get('port'), function () {
