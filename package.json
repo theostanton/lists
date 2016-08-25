@@ -15,7 +15,8 @@
     "ejs": "2.4.1",
     "express": "4.13.3",
     "pg": "4.x",
-    "querystring": "^0.2.0"
+    "querystring": "^0.2.0",
+    "request": "^2.74.0"
   },
   "repository": {
     "type": "git",

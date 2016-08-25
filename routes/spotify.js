@@ -4,6 +4,7 @@
 
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
+var request = require('request'); // "Request" library
 
 
 var client_id = '92f1a296e55c470ab95ab7c0e5d123d6';
