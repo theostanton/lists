@@ -135,14 +135,14 @@ exports.callback = function (req, res) {
         .catch(function (storeError) {
             console.error('storeError', storeError);
             res.status(400).send({error: 'Error storing user'})
-        })
-        .then(function (playlistsResult) {
-            console.log('playlistResult', playlistsResult);
-            return storePlaylists(playlistResult, )
-        })
-        .catch(function (playlistsError) {
-            console.error('playlistsError', playlistsError);
-        })
+        });
+        // .then(function (playlistsResult) {
+        //     console.log('playlistResult', playlistsResult);
+        //     return storePlaylists(playlistResult, )
+        // })
+        // .catch(function (playlistsError) {
+        //     console.error('playlistsError', playlistsError);
+        // })
 
 };
 
