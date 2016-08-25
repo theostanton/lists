@@ -24,6 +24,7 @@ var generateRandomString = function (length) {
 };
 
 exports.login = function (req, res) {
+    console.log('spotify.login');
 
     var state = generateRandomString(16);
     res.cookie(stateKey, state);
@@ -43,6 +44,8 @@ exports.login = function (req, res) {
 
 exports.callback = function (req, res) {
 
+    console.log('spotify.callback');
+
     // your application requests refresh and access tokens
     // after checking the state parameter
 
@@ -50,7 +53,7 @@ exports.callback = function (req, res) {
     var state = req.query.state || null;
     var storedState = req.cookies ? req.cookies[stateKey] : null;
 
-    if (state === null || state !== storedState) {
+    if (false && state === null || state !== storedState) {
         res.redirect('/#' +
             querystring.stringify({
                 error: 'state_mismatch'
