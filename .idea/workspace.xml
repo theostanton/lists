@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7a62a08e-f0e8-4a01-acd7-96d89c28920b" name="Default" comment=".">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.js" afterPath="$PROJECT_DIR$/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/spotify.js" afterPath="$PROJECT_DIR$/routes/spotify.js" />
     </list>
     <ignored path="listBackend.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,14 +25,14 @@
     <favorites_list name="listBackend" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.80873865">
       <split-first>
         <leaf>
           <file leaf-file-name="spotify.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/routes/spotify.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="225">
-                  <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+                <state relative-caret-position="90">
+                  <caret line="69" column="117" selection-start-line="69" selection-start-column="117" selection-end-line="69" selection-end-column="117" />
                   <folding />
                 </state>
               </provider>
@@ -91,8 +91,8 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/views/partials/nav.ejs" />
         <option value="$PROJECT_DIR$/routes/web/items.js" />
-        <option value="$PROJECT_DIR$/routes/spotify.js" />
         <option value="$PROJECT_DIR$/index.js" />
+        <option value="$PROJECT_DIR$/routes/spotify.js" />
       </list>
     </option>
   </component>
@@ -259,7 +259,7 @@
     <property name="FullScreen" value="true" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
-    <property name="SearchEverywhereHistoryKey" value="spot&#9;FILE&#9;file:///Users/theostanton/List/listBackend/routes/spotify.js&#10;home&#9;FILE&#9;file:///Users/theostanton/List/listBackend/views/pages/home.ejs&#10;inde&#9;FILE&#9;file:///Users/theostanton/List/listBackend/index.js&#10;ite&#9;FILE&#9;file:///Users/theostanton/List/listBackend/views/partials/item.ejs&#10;nav&#9;FILE&#9;file:///Users/theostanton/List/listBackend/views/partials/nav.ejs&#10;lists&#9;FILE&#9;file:///Users/theostanton/List/listBackend/routes/api/lists.js&#10;user&#9;FILE&#9;file:///Users/theostanton/List/listBackend/routes/api/users.js&#10;findby&#9;null&#9;null&#10;sp&#9;FILE&#9;file:///Users/theostanton/List/listBackend/routes/spotify.js&#10;pac&#9;FILE&#9;file:///Users/theostanton/List/listBackend/package.json" />
+    <property name="SearchEverywhereHistoryKey" value="spoti&#9;FILE&#9;file:///Users/theostanton/List/listBackend/routes/spotify.js&#10;spot&#9;FILE&#9;file:///Users/theostanton/List/listBackend/routes/spotify.js&#10;home&#9;FILE&#9;file:///Users/theostanton/List/listBackend/views/pages/home.ejs&#10;inde&#9;FILE&#9;file:///Users/theostanton/List/listBackend/index.js&#10;ite&#9;FILE&#9;file:///Users/theostanton/List/listBackend/views/partials/item.ejs&#10;nav&#9;FILE&#9;file:///Users/theostanton/List/listBackend/views/partials/nav.ejs&#10;lists&#9;FILE&#9;file:///Users/theostanton/List/listBackend/routes/api/lists.js&#10;user&#9;FILE&#9;file:///Users/theostanton/List/listBackend/routes/api/users.js&#10;findby&#9;null&#9;null&#10;sp&#9;FILE&#9;file:///Users/theostanton/List/listBackend/routes/spotify.js&#10;pac&#9;FILE&#9;file:///Users/theostanton/List/listBackend/package.json" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="settings.editor.selected.configurable" value="liveEdit" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
@@ -378,7 +378,7 @@
       <workItem from="1472119558421" duration="6160000" />
       <workItem from="1472127291001" duration="2007000" />
       <workItem from="1472133435075" duration="9055000" />
-      <workItem from="1472145890686" duration="12349000" />
+      <workItem from="1472145890686" duration="12681000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <created>1472204538821</created>
@@ -391,7 +391,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31967000" />
+    <option name="totallyTimeSpent" value="32299000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -923,14 +923,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/spotify.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="507">
@@ -938,6 +930,14 @@
           <folding>
             <marker date="1472205401000" expanded="true" signature="495:583" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/spotify.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="69" column="117" selection-start-line="69" selection-start-column="117" selection-end-line="69" selection-end-column="117" />
+          <folding />
         </state>
       </provider>
     </entry>

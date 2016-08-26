@@ -66,8 +66,8 @@ function storePlaylists(user_id, playlists) {
 
             console.log('storedIds', storedIds);
 
-            var insertColumns = new pgp.helpers.ColumnSet(['id', 'name', 'user_id', 'public'], {table: 'list_table'});
-            var updateColumns = new pgp.helpers.ColumnSet(['?id', 'name', 'user_id', 'public'], {table: 'list_table'});
+            var insertColumns = new pgp.helpers.ColumnSet(['id', 'name', 'user_id', 'public','uri','url','image_url'], {table: 'list_table'});
+            var updateColumns = new pgp.helpers.ColumnSet(['?id', 'name', 'user_id', 'public','uri','url','image_url'], {table: 'list_table'});
 
             var valuesToUpdate = [];
             var valuesToInsert = [];
