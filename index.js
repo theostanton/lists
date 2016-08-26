@@ -48,7 +48,7 @@ app.get('/times', function (request, response) {
 });
 
 var usersRouter = require('./routes/api/users');
-app.use('/users',usersRouter);
+app.use('/api/users',usersRouter);
 
 var spotify = require('./routes/spotify');
 app.get('/login', spotify.login);

@@ -14,8 +14,8 @@ var access_token = 'BQATsv31pJTfI5OCR7vOYD-XmXwF4uDMwTCXiaLWWimFz2VFp0xiAzyk-U3h
 
 var client_id = '92f1a296e55c470ab95ab7c0e5d123d6';
 var client_secret = '1571832b11cd44c7af02af2eefc12dff';
-// var redirect_uri = 'https://pacific-headland-98039.herokuapp.com/spotify_callback';
-var redirect_uri = 'http://127.0.0.1:5000/spotify_callback';
+var redirect_uri = 'https://pacific-headland-98039.herokuapp.com/spotify_callback';
+// var redirect_uri = 'http://127.0.0.1:5000/spotify_callback';
 
 var stateKey = 'spotify_auth_state';
 
