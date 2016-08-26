@@ -28,9 +28,10 @@ router.route('/').get(function (res, req) {
 
         },
         function (error) {
-            res.status(403).send({error:'Error fetching list',exception:error});
+            res.status(403).send({error: 'Error fetching list', exception: error});
         })
 });
+
 router.route('/:list_id').get(function (req, res) {
 
     var listId = res.params.list_id;
@@ -53,12 +54,8 @@ router.route('/:list_id').get(function (req, res) {
 
         },
         function (error) {
-            res.status(403).send({error:'Error fetching list',exception:error});
+            res.status(403).send({error: 'Error fetching list', exception: error});
         })
 });
-
-
-var listRouter = require('./items');
-router.use('/:user_id/lists/:list_id/items', listRouter);
 
 module.exports = router;

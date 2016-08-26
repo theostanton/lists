@@ -14,7 +14,8 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.get('/', function (request, response) {
-    response.render('pages/index');
+    var user = {name: 'Theo'};
+    response.render('pages/home', {user: user});
 });
 
 // app.get('/users/:id',function|(req, res){
