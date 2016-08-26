@@ -31,10 +31,10 @@
           <file leaf-file-name="nav.ejs" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/views/partials/nav.ejs">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="75">
-                  <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+                <state relative-caret-position="105">
+                  <caret line="7" column="82" selection-start-line="7" selection-start-column="82" selection-end-line="7" selection-end-column="82" />
                   <folding>
-                    <marker date="1472205158000" expanded="true" signature="349:407" ph="{...}" />
+                    <marker date="1472205203000" expanded="true" signature="449:507" ph="{...}" />
                   </folding>
                 </state>
               </provider>
@@ -331,7 +331,7 @@
       <workItem from="1472119558421" duration="6160000" />
       <workItem from="1472127291001" duration="2007000" />
       <workItem from="1472133435075" duration="9055000" />
-      <workItem from="1472145890686" duration="12106000" />
+      <workItem from="1472145890686" duration="12149000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <created>1472204538821</created>
@@ -344,7 +344,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31724000" />
+    <option name="totallyTimeSpent" value="31767000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -966,10 +966,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/partials/nav.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+        <state relative-caret-position="105">
+          <caret line="7" column="82" selection-start-line="7" selection-start-column="82" selection-end-line="7" selection-end-column="82" />
           <folding>
-            <marker date="1472205158000" expanded="true" signature="349:407" ph="{...}" />
+            <marker date="1472205203000" expanded="true" signature="449:507" ph="{...}" />
           </folding>
         </state>
       </provider>
