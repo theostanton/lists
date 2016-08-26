@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include ../partials/header.ejs %>
+</head>
+
+<body>
+
+<% include ../partials/nav.ejs %>
+
+<div class="jumbotron text-center">
+    <div class="container">
+        <h1>Lists</h1>
+        <h3>Count = <%= lists.length %></h3>
+
+        <% var list = undefined; %>
+        <% lists.forEach(function(aList) { %>
+        <% list = aList; %>
+        <% include ../partials/list_block.ejs %>
+
+        <% }); %>
+
+    </div>
+</div>
+
+</body>
+
+</html>

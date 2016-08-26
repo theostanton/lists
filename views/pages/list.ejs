@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <% include ../partials/header.ejs %>
+</head>
+
+<body>
+
+<% include ../partials/nav.ejs %>
+
+<div class="jumbotron text-center">
+    <div class="container">
+        <h1><%= list.name %></h1>
+        <iframe src="https://embed.spotify.com/follow/1/?uri=spotify:user:<%= user.id %>&size=detail&theme=light"
+                width="300" height="56" scrolling="no" frameborder="0" style="border:none; overflow:scroll;"
+                allowtransparency="true"></iframe>
+    </div>
+</div>
+
+</body>
+
+<script>
+
+    $.get("/api/users/theostanton/lists/<%= list.playlist_id %>/items", function (items) {
+        console.log('got');
+        console.log(`${items.length} items`);
+        items.forEach(function (item) {
+            var html = new EJS({url: '/templates/item_block'}).render({item: item});
+            console.log('html', html);
+            $('body').append(html);
+        });
+    });
+
+</script>
+
+</html>

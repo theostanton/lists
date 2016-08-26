@@ -9,13 +9,14 @@ var rp = require('request-promise');
 
 var pgp = require('pg-promise')();
 var database = require('../database');
+var itemsTable = require('../data/items');
 
 var access_token = 'BQATsv31pJTfI5OCR7vOYD-XmXwF4uDMwTCXiaLWWimFz2VFp0xiAzyk-U3hzcDeYvaF1mXJ5gHK7fqJ5i6Qnjd4szyh3o6Kaz8LyCyz2f8BiBBV7wYiMByd5vbg7pyza4xF9L183G7MstCZr6WbYTTMAPh5Rb2ugL4K';
 
 var client_id = '92f1a296e55c470ab95ab7c0e5d123d6';
 var client_secret = '1571832b11cd44c7af02af2eefc12dff';
-var redirect_uri = 'https://pacific-headland-98039.herokuapp.com/spotify_callback';
-// var redirect_uri = 'http://127.0.0.1:5000/spotify_callback';
+// var redirect_uri = 'https://pacific-headland-98039.herokuapp.com/spotify_callback';
+var redirect_uri = 'http://127.0.0.1:5000/spotify_callback';
 
 var stateKey = 'spotify_auth_state';
 
@@ -48,7 +49,7 @@ function storePlaylists(user_id, playlists) {
 
 
     var ids = playlists.map(function (item) {
-        return item.id
+        return `${user_id}-${item.id}`
     });
     console.log(ids);
 
@@ -57,7 +58,7 @@ function storePlaylists(user_id, playlists) {
 
     var $scope = {};
 
-    return database.many(idsQuery)
+    return database.any(idsQuery)
         .then(function (storedIds) {
 
             storedIds = storedIds.map(function (item) {
@@ -66,16 +67,17 @@ function storePlaylists(user_id, playlists) {
 
             console.log('storedIds', storedIds);
 
-            var insertColumns = new pgp.helpers.ColumnSet(['id', 'name', 'user_id', 'public','uri','url','image_url'], {table: 'list_table'});
-            var updateColumns = new pgp.helpers.ColumnSet(['?id', 'name', 'user_id', 'public','uri','url','image_url'], {table: 'list_table'});
+            var insertColumns = new pgp.helpers.ColumnSet(['id', 'playlist_id', 'name', 'user_id', 'public', 'uri', 'url', 'image_url'], {table: 'list_table'});
+            var updateColumns = new pgp.helpers.ColumnSet(['?id', 'playlist_id', 'name', 'user_id', 'public', 'uri', 'url', 'image_url'], {table: 'list_table'});
 
             var valuesToUpdate = [];
             var valuesToInsert = [];
             playlists.forEach(function (playlist) {
                 var value = {
-                    id: playlist.id,
-                    name: playlist.name,
+                    id: `${user_id}-${playlist.id}`,
+                    playlist_id: playlist.id,
                     user_id: user_id,
+                    name: playlist.name,
                     image_url: playlist.images[0].url,
                     public: playlist.public,
                     uri: playlist.uri,
@@ -89,13 +91,28 @@ function storePlaylists(user_id, playlists) {
                 }
             });
 
-            $scope.updateQuery = pgp.helpers.update(valuesToUpdate, updateColumns) + ' WHERE v.id = t.id';
+
+            if (valuesToUpdate.length > 0) {
+                $scope.updateQuery = pgp.helpers.update(valuesToUpdate, updateColumns) + ' WHERE v.id = t.id ';
+            } else {
+                $scope.updateQuery = false;
+            }
+
+            if (valuesToInsert.length == 0) {
+                return true;
+            }
+
             var insertQuery = pgp.helpers.insert(valuesToInsert, insertColumns);
             return database.none(insertQuery);
         })
         .then(function (insertResult) {
             console.log('insertResult', insertResult);
-            return database.none($scope.updateQuery);
+            if ($scope.updateQuery) {
+                return database.none($scope.updateQuery);
+            } else {
+                return true;
+            }
+
         });
 
 }
@@ -117,6 +134,29 @@ exports.login = function (req, res) {
             state: state
         }));
 };
+
+
+exports.storeTracksForPlaylistId = function (accessToken, userId, playlistId) {
+    var opts = {
+        url: `https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`,
+        headers: {
+            'Authorization': `Bearer ${accessToken}`
+        },
+        json: true
+    };
+
+    return rp.get(opts).then(function (tracks) {
+        // console.log(tracks);
+        return itemsTable.storeTracks(userId, playlistId, tracks.items)
+            .then(function (result) {
+                console.log('result', result);
+            });
+    }).catch(function (error) {
+        console.error('Error fetching tracks',error);
+        throw error;
+    })
+};
+
 
 exports.callback = function (req, res) {
 
@@ -167,6 +207,7 @@ exports.callback = function (req, res) {
                 .then(function (meResult) {
                     console.log('meResult', meResult);
                     $token = tokenResult.access_token;
+                    process.env.ACCESS_TOKEN = tokenResult.access_token;
                     $user_id = meResult.id;
                     return storeUser(meResult.id, tokenResult.access_token, tokenResult.refresh_token)
                 })
@@ -204,7 +245,7 @@ exports.callback = function (req, res) {
             console.error('stack', playlistsError.stack);
         })
         .then(function (finalResult) {
-            var url = `/users/${$user_id}`;
+            var url = `web/${$user_id}/lists`
             console.log('finalResult', finalResult);
             console.log('Redirection to ' + url);
             res.redirect(url);
@@ -231,6 +272,7 @@ exports.me = function (req, res) {
     })
 
 };
+
 
 
 

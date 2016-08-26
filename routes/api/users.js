@@ -1,14 +1,13 @@
 /**
  * Created by theostanton on 25/08/2016.
  */
-var db = require('../../database');
-var router = require('express').Router();
+var router = require('express').Router({mergeParams: true});
+var userTable = require('../../data/users');
 
 router.route('/').get(function (req, res) {
     console.log('users.findAll');
 
-
-    db.any('SELECT * FROM user_table')
+    userTable.getAll()
         .then(
             function (result) {
                 console.log({users: result});
@@ -32,7 +31,7 @@ router.route('/:user_id').get(function (req, res) {
         res.send('No userId given');
     }
 
-    db.one(`SELECT * FROM user_table WHERE id = '${userId}' LIMIT 1`)
+    userTable.get(userId)
         .then(
             function (result) {
                 console.log(`result= ${result}`);

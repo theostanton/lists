@@ -47,14 +47,17 @@ app.get('/times', function (request, response) {
     response.send(result);
 });
 
-var usersRouter = require('./routes/api/users');
-app.use('/users',usersRouter);
+var apiRouter = require('./routes/api/users');
+app.use('/api/users',apiRouter);
+
 
 var spotify = require('./routes/spotify');
 app.get('/login', spotify.login);
 app.get('/spotify_callback', spotify.callback);
 app.get('/me', spotify.me);
 
+var webRouter = require('./routes/web/index');
+app.use('/web/',webRouter);
 
 app.listen(app.get('port'), function () {
     console.log('Node app is running on port', app.get('port'));

@@ -5,8 +5,8 @@
 
 var pgp = require('pg-promise')();
 
-// var database = pgp('postgres://aewkpyifpnbmaz:NevfUaKfMT3BMYNCqjcDyyEqtk@ec2-54-221-225-242.compute-1.amazonaws.com:5432/d8holphnou70jb?ssl=true');
-var database = pgp(process.env.DATABASE_URL);
+var database = pgp('postgres://aewkpyifpnbmaz:NevfUaKfMT3BMYNCqjcDyyEqtk@ec2-54-221-225-242.compute-1.amazonaws.com:5432/d8holphnou70jb?ssl=true');
+// var database = pgp(process.env.DATABASE_URL);
 //
 // exports.upsert = function () {
 //     query('SELECT ${columns^} FROM ${table~}', {

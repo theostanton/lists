@@ -6,9 +6,9 @@
 var db = require('../../database');
 var router = require('express').Router({mergeParams: true});
 
-router.route('/').get(function (res, req) {
+router.route('/').get(function (req, res) {
 
-    var userId = res.params.user_id;
+    var userId = req.params.user_id;
 
     if (!userId) {
         res.status(400).send({error: 'No user_id received'})
@@ -33,9 +33,9 @@ router.route('/').get(function (res, req) {
 });
 router.route('/:list_id').get(function (req, res) {
 
-    var listId = res.params.list_id;
+    var listId = req.params.list_id;
 
-    if (!list_id) {
+    if (!listId) {
         res.status(400).send({error: 'No list_id received'})
     }
 
@@ -58,7 +58,8 @@ router.route('/:list_id').get(function (req, res) {
 });
 
 
-var listRouter = require('./items');
-router.use('/:user_id/lists/:list_id/items', listRouter);
+var itemRouter = require('./items');
+// router.use('/:user_id/lists/:list_id/items', itemRouter);
+router.use('/:playlist_id/items', itemRouter);
 
 module.exports = router;

@@ -1,21 +1,24 @@
 <nav class="navbar navbar-default navbar-static-top navbar-inverse">
-  <div class="container">
-    <ul class="nav navbar-nav">
-      <li class="active">
-        <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
-      </li>
-      <li>
-        <a href="/mylists"><span class="glyphicon glyphicon-user"></span> My lists</a>
-      </li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li class="navbar-right">
-        <% if (user) { %>
-        <a href="/"><%= user.name %></a>
-        <% } else{ %>
-        <a href="/login">Login</a>
-        <% } %>
-      </li>
-    </ul>
-  </div>
+    <div class="container">
+        <ul class="nav navbar-nav">
+            <li class="active">
+                <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
+            </li>
+
+            <% if (user) { %>
+            <li>
+                <a href="/web/<%= user.id %>/lists"><span class="glyphicon glyphicon-user"></span> My lists</a>
+            </li>
+            <% } %>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="navbar-right">
+                <% if (user) { %>
+                <a href="/"><%= user.name %></a>
+                <% } else{ %>
+                <a href="/login">Login</a>
+                <% } %>
+            </li>
+        </ul>
+    </div>
 </nav>
